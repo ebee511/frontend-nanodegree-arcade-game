@@ -51,6 +51,32 @@ Player.prototype.render = function() {
 
 Player.prototype.handleInput = function(arrowKey) {
     //Moves player coordinates 
+    switch (arrowKey) {
+        case 'left':
+            if (player.x > 0) {
+              player.x = this.x - 50;  
+            }
+            console.log('left');
+            break;
+        case 'up':
+            if (player.y > -10) {
+              player.y = this.y - 50; 
+            }
+            console.log('up');
+            break;
+        case 'right':
+            if (player.x < 400) {
+              player.x = this.x + 50;  
+            }
+            console.log('right');
+            break;
+        case 'down':
+            if (player.y < 440) {
+              player.y = this.y + 50; 
+            }
+            console.log('down');
+            break;       
+    }
 };
 
 Player.prototype.resetPlayer = function() {
