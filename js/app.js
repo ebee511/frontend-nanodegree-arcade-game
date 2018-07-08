@@ -57,8 +57,6 @@ var Player = function(x, y, speed) {
 
 Player.prototype.update = function(dt) {
     //Update player position
-    // this.x += this.speed * dt;
-
     //Check is player reaches final destination - if so, they won
     if (player.y < 40) {
         alert('You win');
@@ -67,7 +65,6 @@ Player.prototype.update = function(dt) {
             enemy.speed = Enemy.prototype.randomSpeed(50, 200);
         })
     }
-    
 };
 
 Player.prototype.render = function() {
