@@ -40,8 +40,9 @@ Enemy.prototype.checkCollisions = function(player) {
 }
 
 //MAYBE - enemy prototype for speed
-Enemy.prototype.randomSpeed = function() {
+Enemy.prototype.randomSpeed = function(min, max) {
     //code to randomize speed for enemy
+    return Math.random() * (max - min) + min;
 }
 
 // PLAYER CLASS
@@ -56,8 +57,16 @@ var Player = function(x, y, speed) {
 
 Player.prototype.update = function(dt) {
     //Update player position
-    //Check for collide (if player x and y collide with enemy x and y)
+    // this.x += this.speed * dt;
+
     //Check is player reaches final destination - if so, they won
+    if (player.y < 40) {
+        alert('You win');
+        Player.prototype.resetPlayer();
+        allEnemies.forEach(function(enemy) {
+            enemy.speed = Enemy.prototype.randomSpeed(50, 200);
+        })
+    }
     
 };
 
@@ -103,9 +112,9 @@ Player.prototype.resetPlayer = function() {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-var enemy1 = new Enemy(0, 145, 80); //bottom
-var enemy2 = new Enemy(0, 225, 100);
-var enemy3 = new Enemy(0, 310, 150); //top
+var enemy1 = new Enemy(0, 145, Enemy.prototype.randomSpeed(50, 200)); //bottom
+var enemy2 = new Enemy(0, 225, Enemy.prototype.randomSpeed(50, 200));
+var enemy3 = new Enemy(0, 310, Enemy.prototype.randomSpeed(50, 200)); //top
 
 // Place the player object in a variable called player
 var allEnemies = [];
