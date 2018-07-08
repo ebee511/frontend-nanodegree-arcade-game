@@ -1,3 +1,6 @@
+// Strict mode prevents errors or poorly thought out code
+"use strict";
+
 // Enemy Constructor
 var Enemy = function(x, y, speed) {
   this.x = x;
@@ -60,7 +63,7 @@ var Player = function(x, y, speed) {
 Player.prototype.update = function(dt) {
   //Update player position
   //Check if player reaches final destination - if so, alert win
-  if (player.y < 40) {
+  if (this.y < 40) {
     alert('You win');
     Player.prototype.resetPlayer();
     allEnemies.forEach(function(enemy) {
@@ -77,23 +80,23 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(arrowKey) {
   switch (arrowKey) {
     case 'left':
-      if (player.x > 0) {
-        player.x = this.x - 50;  
+      if (this.x > 0) {
+        this.x = this.x - 50;  
       }
       break;
     case 'up':
-      if (player.y > -10) {
-        player.y = this.y - 50; 
+      if (this.y > -10) {
+        this.y = this.y - 50; 
       }
       break;
     case 'right':
-      if (player.x < 400) {
-        player.x = this.x + 50;  
+      if (this.x < 400) {
+        this.x = this.x + 50;  
       }
       break;
     case 'down':
-      if (player.y < 440) {
-        player.y = this.y + 50; 
+      if (this.y < 440) {
+        this.y = this.y + 50; 
       }
       break;       
   }
@@ -101,8 +104,8 @@ Player.prototype.handleInput = function(arrowKey) {
 
 Player.prototype.resetPlayer = function() {
   //Brings player back to specific coordinates if there is a collision
-  player.x = 200;
-  player.y = 390;
+  this.x = 200;
+  this.y = 390;
 };
 
 // Now instantiate your objects.
