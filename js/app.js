@@ -65,7 +65,7 @@ Player.prototype.update = function(dt) {
   //Check if player reaches final destination - if so, alert win
   if (this.y < 40) {
     alert('You win');
-    Player.prototype.resetPlayer();
+    this.resetPlayer();
     allEnemies.forEach(function(enemy) {
       enemy.speed = Enemy.prototype.randomSpeed(50, 200);
     });
